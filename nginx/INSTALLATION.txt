@@ -21,7 +21,7 @@ Serverdateien gehören außerhalb des öffentlich erreichbaren Webroots.
 Verhalten:
 - Kanonische Domain: https://bsv-donzdorf.de/ (ohne www).
 - Alte Kernseiten und nachgewiesene WP-IDs 84, 87, 240: 301 direkt zum passenden Ziel.
-- Alte News-Übersichten: 301 zu https://bsv-donzdorf.de/#aktuelles. Die Artikel werden beim Seitenaufruf direkt über die öffentliche Staufen-Events-API geladen.
+- Alte News-Übersichten: 301 zu https://bsv-donzdorf.de/#aktuelles. Die vollständigen aktuellen Artikel werden direkt aus einer öffentlichen Artikelschnittstelle geladen; eine separate news.json ist nicht erforderlich.
 - Einzelbeiträge nur bei passendem Ersatz weiterleiten; sonst 404.
 - Alte Galerien/Erfolge/Links ohne wiederhergestellten Inhalt: 404.
 - Unbekannte Pfade, WordPress-Abfragen und fehlende Assets: echte 404, kein Startseiten-Fallback.

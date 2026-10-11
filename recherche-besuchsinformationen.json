@@ -3,10 +3,10 @@
   "local_only": true,
   "added_to_website": [
     "Kurze und lange Runde: Abzweigung nach Ziel 13.",
-    "Lange Runde allein etwa zwei Stunden, in Gruppen mit Pausen länger.",
+    "Lange Runde etwa zwei Stunden; in Gruppen mit Pausen länger.",
     "Wanderschuhe und wettergerechte Kleidung.",
-    "Bogenverleih: Körpergröße und Rechts-/Linkshändigkeit bei Anfrage angeben.",
-    "Eventbuchung telefonisch oder per E-Mail, danach Auftragsbestätigung und Rechnung; Treffpunkt in der Bestätigung."
+    "Tageskarte Erwachsene: 14 Euro, vom Nutzer bestätigt.",
+    "Ganzjährig geöffnet, von Sonnenaufgang bis Sonnenuntergang, vom Nutzer bestätigt."
   ],
   "archive_not_presented_as_current": {
     "parcours": {
@@ -43,5 +43,11 @@
     "event_booking": "https://staufen-events.de/agb/",
     "archived_parcours": "https://web.archive.org/web/20260420063830/https://bsv-donzdorf.de/parcours/",
     "archived_club": "https://web.archive.org/web/20260312100351/https://bsv-donzdorf.de/verein/"
+  },
+  "updated_on": "2026-10-11",
+  "current_user_confirmed": {
+    "confirmed_on": "2026-10-11",
+    "adult_day_eur": 14,
+    "opening_hours": "Ganzjährig, von Sonnenaufgang bis Sonnenuntergang"
   }
 }

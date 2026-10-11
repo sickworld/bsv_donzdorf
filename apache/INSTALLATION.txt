@@ -9,7 +9,7 @@ Nginx allein liest keine .htaccess; dort gelten weiterhin die Dateien in nginx/.
 
 Die Datei enthält permanente Weiterleitungen für die zugeordneten Alt-URLs, bereinigt
 alte WordPress-Parameter und liefert bei fehlendem Inhalt 404 mit /404.html.
-Die 301-Ziele zeigen auf https://bsv-donzdorf.de/ bzw. die passenden Staufen-Events-Seiten.
+Die 301-Ziele zeigen ausschließlich auf passende Inhalte unter https://bsv-donzdorf.de/.
 Lokale Vorschau-Hosts werden nicht pauschal auf die produktive Domain umgeleitet.
 
 Es wurden keine Serverdateien veröffentlicht oder produktive Einstellungen verändert.

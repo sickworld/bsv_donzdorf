@@ -51,8 +51,7 @@ RewriteRule ^datenschutzerklaerung/?$ "https://bsv-donzdorf.de/datenschutz.html"
 RewriteRule ^aktuelles/?$ "https://bsv-donzdorf.de/#aktuelles" [R=301,END,NE,QSD,NC]
 RewriteRule ^neuigkeiten/?$ "https://bsv-donzdorf.de/#aktuelles" [R=301,END,NE,QSD,NC]
 RewriteRule ^pages/kalender\.php/?$ "https://bsv-donzdorf.de/#aktuelles" [R=301,END,NE,QSD,NC]
-RewriteRule ^2022/09/25/bogenverleih\-in\-donzdorf/?$ "https://staufen-events.de/angebot/bogenverleih/" [R=301,END,NE,QSD,NC]
-RewriteRule ^2025/09/12/viele\-schuetzinnen\-und\-schuetzen\-fragen\-uns\-ob\-sie\-mit\-ihrer\-eigenen\-bogenausruestung\-auf\-unserem\-vereinsparcours\-trainieren\-duerfen/?$ "https://staufen-events.de/2025/09/10/mit-eigener-ausruestung-auf-dem-parcours-kein-problem/" [R=301,END,NE,QSD,NC]
+RewriteRule ^2025/09/12/viele\-schuetzinnen\-und\-schuetzen\-fragen\-uns\-ob\-sie\-mit\-ihrer\-eigenen\-bogenausruestung\-auf\-unserem\-vereinsparcours\-trainieren\-duerfen/?$ "https://bsv-donzdorf.de/#besuch" [R=301,END,NE,QSD,NC]
 RewriteRule ^category/allgemein(?:/page/[0-9]+)?/?$ "https://bsv-donzdorf.de/#aktuelles" [R=301,END,NE,QSD,NC]
 RewriteRule ^page/[0-9]+/?$ "https://bsv-donzdorf.de/#aktuelles" [R=301,END,NE,QSD,NC]
 

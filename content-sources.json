@@ -13,10 +13,12 @@
     "archived_club": "https://web.archive.org/web/20260312100351/https://bsv-donzdorf.de/verein/"
   },
   "notes": [
-    "Rental prices are not presented as entrance prices.",
-    "Current Staufen Events pages checked do not confirm opening hours or own-equipment entry prices. Those details were recovered from the April 2026 archive and saved separately in recherche-besuchsinformationen.json; the public page uses contact links.",
-    "Provider details are attributed to Staufen Events.",
-    "Added current operator information on route options, approximate duration, clothing, rental preparation and event booking. Booking procedure refers to events, not unattended parcours admission."
+    "User corrections on 2026-10-11: no external provider branding or rental offers on the public website.",
+    "User confirmed adult day ticket: EUR 14; open all year from sunrise to sunset.",
+    "Current club imprint details requested from the user; removed the unrelated provider identity.",
+    "User explicitly authorized complete current articles from the previous public feed on 2026-10-11. Article wording is retained except provider branding and closing signatures.",
+    "News are fetched directly from the public WordPress API; visible provider names become BSV Donzdorf and each article closes with Euer BSV-Team.",
+    "The public website no longer depends on a separate news.json upload. Existing homepage rental offers remain removed."
   ],
   "video": {
     "source": "https://www.youtube.com/watch?v=O-C5zyD0urc&t=25s",
@@ -26,5 +28,6 @@
     "end_seconds": 55,
     "local_asset": "site/dist/assets/parcours-loop.mp4",
     "processing": "Silent H.264 loop; removed baked-in black bars; 1280px wide; JPEG poster extracted from first frame."
-  }
+  },
+  "updated_on": "2026-10-11"
 }

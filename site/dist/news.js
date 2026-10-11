@@ -1,4 +1,4 @@
-// Public WordPress articles; no login, cookies or third-party scripts needed.
+// Full current articles from the public feed, displayed with BSV branding.
 (() => {
   const list = document.getElementById('news-list');
   if (!list) return;
@@ -27,6 +27,15 @@
     return node;
   }
 
+  function clubText(value, article = false) {
+    const text = String(value || '')
+      .replace(/(?:Euer|Dein)\s+(?:(?:Team\s+)?(?:von|vom)\s+)?Staufen\s+Events(?:[-\s]+Team)?/gi, 'Euer BSV-Team')
+      .replace(/Staufen\s+Events/gi, 'BSV Donzdorf')
+      .replace(/(?:https?:\/\/)?(?:www\.)?staufen-events\.de\/?/gi, 'bsv-donzdorf.de');
+    // The closing line is shown once, below the complete article.
+    return article ? text.replace(/(?:Euer|Dein)\s+(?:BSV[-\s]+Team|(?:Team\s+(?:von|vom)\s+)?BSV(?:\s+Donzdorf)?)/gi, '') : text;
+  }
+
   function removeShortcodes(value) {
     return String(value || '').replace(/\[\/?(?:vc_[\w]+|caption|gallery|embed)(?:\s[^\]]*)?\]/gi, '');
   }
@@ -40,7 +49,7 @@
   function plainText(value) {
     const content = parse(value);
     content.querySelectorAll('script, style, iframe, object, template').forEach(node => node.remove());
-    return (content.textContent || '').replace(/\s+/g, ' ').trim();
+    return clubText(content.textContent).replace(/\s+/g, ' ').trim();
   }
 
   function safeUrl(value, image = false) {
@@ -55,8 +64,12 @@
     const parsed = new URL(url);
     if (parsed.hostname !== 'staufen-events.de') return url;
     if (/^\/(?:aktuelles)?\/?$/.test(parsed.pathname)) return '#aktuelles';
+    if (/^\/angebot\/bogenparcour\/?$/.test(parsed.pathname)) return '#parcours';
+    if (/^\/(?:kontakt|angebot\/bogenverleih|agb)\/?$/.test(parsed.pathname)) return '#besuch';
+    if (/^\/impressum\/?$/.test(parsed.pathname)) return 'impressum.html';
+    if (/^\/datenschutz\/?$/.test(parsed.pathname)) return 'datenschutz.html';
     const match = parsed.pathname.match(/^\/\d{4}\/\d{2}\/\d{2}\/([^/]+)\/?$/);
-    if (!match) return url;
+    if (!match) return '#aktuelles';
     const post = [...posts.values()].find(item => item.slug === match[1]);
     return post ? `#artikel-${post.id}` : `#artikel-slug-${match[1]}`;
   }
@@ -66,7 +79,7 @@
     const source = parse(value);
     const output = document.createDocumentFragment();
     function copy(node, parent) {
-      if (node.nodeType === Node.TEXT_NODE) { parent.append(document.createTextNode(node.textContent)); return; }
+      if (node.nodeType === Node.TEXT_NODE) { parent.append(document.createTextNode(clubText(node.textContent, true))); return; }
       if (node.nodeType !== Node.ELEMENT_NODE || dropTags.has(node.tagName)) return;
       if (!allowedTags.has(node.tagName)) { node.childNodes.forEach(child => copy(child, parent)); return; }
       const tag = /^H[1-6]$/.test(node.tagName) ? (node.tagName === 'H1' ? 'h3' : node.tagName === 'H2' ? 'h3' : 'h4') : node.tagName.toLowerCase();
@@ -199,7 +212,7 @@
 
   function renderArticle(post) {
     articleTitle.textContent = plainText(post.title.rendered);
-    articleMeta.textContent = `${dateLabel(post)} · STAUFEN EVENTS`;
+    articleMeta.textContent = `${dateLabel(post)} · BSV DONZDORF`;
     articleContent.replaceChildren();
     const image = imageInfo(post, true);
     if (image) articleContent.append(postImage(image, 'article-image'));
@@ -218,7 +231,7 @@
     }
     dialog.scrollTop = 0;
     articleTitle.textContent = 'Artikel wird geladen …';
-    articleMeta.textContent = 'STAUFEN EVENTS';
+    articleMeta.textContent = 'BSV DONZDORF';
     articleContent.replaceChildren();
     try {
       let post = match[2] ? [...posts.values()].find(item => item.slug === match[2]) : posts.get(Number(match[1]));
