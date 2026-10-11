@@ -1,0 +1,15 @@
+Die produktive .htaccess liegt in site/dist/.htaccess, direkt neben index.html.
+Den vollständigen Inhalt von site/dist einschließlich der versteckten .htaccess in
+Apache DocumentRoot kopieren. Apache 2.4 mit mod_rewrite und AllowOverride FileInfo
+Indexes Options (oder AllowOverride All) wird benötigt.
+
+Die Regeln setzen die Installation im Domain-Hauptverzeichnis voraus. Bei TLS hinter
+einem Reverse Proxy muss der Apache-VHost den HTTPS-Zustand korrekt erkennen.
+Nginx allein liest keine .htaccess; dort gelten weiterhin die Dateien in nginx/.
+
+Die Datei enthält permanente Weiterleitungen für die zugeordneten Alt-URLs, bereinigt
+alte WordPress-Parameter und liefert bei fehlendem Inhalt 404 mit /404.html.
+Die 301-Ziele zeigen auf https://bsv-donzdorf.de/ bzw. die passenden Staufen-Events-Seiten.
+Lokale Vorschau-Hosts werden nicht pauschal auf die produktive Domain umgeleitet.
+
+Es wurden keine Serverdateien veröffentlicht oder produktive Einstellungen verändert.

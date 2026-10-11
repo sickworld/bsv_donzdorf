@@ -1,0 +1,45 @@
+BSV Donzdorf – lokale Nginx-Vorbereitung (08.10.2026)
+
+Noch nicht veröffentlicht. Die produktive Konfiguration wurde nicht verändert.
+
+Dateien:
+- site/dist/: kompletter statischer Webroot einschließlich 404.html, robots.txt, sitemap.xml.
+- nginx/redirect-map.conf: einmal im http-Kontext einbinden.
+- nginx/redirect-check.conf: in allen Domain-Serverblöcken vor Host/HTTPS-Redirects einbinden.
+- nginx/site-routes.conf: in den kanonischen HTTPS-Server einbinden.
+- nginx/bsv-donzdorf.conf.example: vollständiges Beispiel für direkte TLS-Terminierung.
+- nginx/alte-urls.csv: jede im ausgewerteten Wayback-Index gefundene HTML-URL mit Entscheidung.
+
+Vor späterer Aktivierung:
+Webroot und Zertifikatpfade an vorhandenes Hosting anpassen; das Zertifikat muss beide
+Hostnamen abdecken. Bestehende ACME-/Zertifikaterneuerung beibehalten. Bei einem Reverse
+Proxy TLS/HTTPS-Weiterleitung am zuständigen Proxy konfigurieren, um Schleifen zu vermeiden.
+Snippets nach /etc/nginx/bsv/ kopieren und nginx -t vor einem Reload ausführen.
+Das ist eine statische Site: alte WordPress-/PHP- und try_files ... /index.php-Regeln ersetzen.
+Serverdateien gehören außerhalb des öffentlich erreichbaren Webroots.
+
+Verhalten:
+- Kanonische Domain: https://bsv-donzdorf.de/ (ohne www).
+- Alte Kernseiten und nachgewiesene WP-IDs 84, 87, 240: 301 direkt zum passenden Ziel.
+- Alte News-Übersichten: 301 zu https://bsv-donzdorf.de/#aktuelles. Die Artikel werden beim Seitenaufruf direkt über die öffentliche Staufen-Events-API geladen.
+- Einzelbeiträge nur bei passendem Ersatz weiterleiten; sonst 404.
+- Alte Galerien/Erfolge/Links ohne wiederhergestellten Inhalt: 404.
+- Unbekannte Pfade, WordPress-Abfragen und fehlende Assets: echte 404, kein Startseiten-Fallback.
+- Bei Legacy-Redirects werden alte Query-Parameter verworfen. Normale Kampagnenlinks zur
+  Startseite bleiben erreichbar; canonical zeigt auf die saubere Startseiten-URL.
+- Impressum und Datenschutz sind eigenständige verlinkte HTML-Seiten (noindex, follow).
+- Sitemap enthält nur die indexierbare Startseite, keine Fragmente oder Weiterleitungen.
+- 404 nutzt absolute Assetpfade, damit tiefe Fehler-URLs funktionieren. Vorschau über HTTP.
+
+Lokaler Nginx-Test:
+docker run --rm --name bsv-nginx-preview -p 127.0.0.1:8879:80 \
+  -v "$PWD/site/dist:/usr/share/nginx/html:ro" \
+  -v "$PWD/nginx:/etc/nginx/bsv:ro" \
+  -v "$PWD/nginx/local-test.conf:/etc/nginx/nginx.conf:ro" nginx:stable-alpine
+Dann python3 nginx/check_routes.py und http://127.0.0.1:8879/nicht-vorhanden öffnen.
+Im Test zeigen 301-Ziele bereits auf die spätere echte Domain; nicht automatisch verfolgen.
+
+Grundlagen:
+https://developers.google.com/search/docs/crawling-indexing/site-move-with-url-changes
+https://nginx.org/en/docs/http/ngx_http_core_module.html#error_page
+https://nginx.org/en/docs/http/ngx_http_map_module.html

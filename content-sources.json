@@ -1,0 +1,30 @@
+{
+  "checked_on": "2026-10-08",
+  "local_only": true,
+  "sources": {
+    "parcours": "https://staufen-events.de/angebot/bogenparcour/",
+    "rental": "https://staufen-events.de/angebot/bogenverleih/",
+    "legal": "https://staufen-events.de/impressum/",
+    "contact": "https://staufen-events.de/kontakt/",
+    "rounds": "https://staufen-events.de/2025/08/26/zwei-runden-viele-ziele-und-ein-echtes-erlebnis-unser-parcours-aus-besuchersicht/",
+    "clothing": "https://staufen-events.de/2026/08/20/neues-target-im-wald-der-wachsame-fuchs/",
+    "event_booking": "https://staufen-events.de/agb/",
+    "archived_parcours": "https://web.archive.org/web/20260420063830/https://bsv-donzdorf.de/parcours/",
+    "archived_club": "https://web.archive.org/web/20260312100351/https://bsv-donzdorf.de/verein/"
+  },
+  "notes": [
+    "Rental prices are not presented as entrance prices.",
+    "Current Staufen Events pages checked do not confirm opening hours or own-equipment entry prices. Those details were recovered from the April 2026 archive and saved separately in recherche-besuchsinformationen.json; the public page uses contact links.",
+    "Provider details are attributed to Staufen Events.",
+    "Added current operator information on route options, approximate duration, clothing, rental preparation and event booking. Booking procedure refers to events, not unattended parcours admission."
+  ],
+  "video": {
+    "source": "https://www.youtube.com/watch?v=O-C5zyD0urc&t=25s",
+    "title": "2021 06 03 Donzdorf",
+    "author": "Die Avengers - Bogensport",
+    "start_seconds": 25,
+    "end_seconds": 55,
+    "local_asset": "site/dist/assets/parcours-loop.mp4",
+    "processing": "Silent H.264 loop; removed baked-in black bars; 1280px wide; JPEG poster extracted from first frame."
+  }
+}

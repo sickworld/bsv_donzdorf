@@ -1,0 +1,47 @@
+{
+  "checked_on": "2026-10-08",
+  "local_only": true,
+  "added_to_website": [
+    "Kurze und lange Runde: Abzweigung nach Ziel 13.",
+    "Lange Runde allein etwa zwei Stunden, in Gruppen mit Pausen länger.",
+    "Wanderschuhe und wettergerechte Kleidung.",
+    "Bogenverleih: Körpergröße und Rechts-/Linkshändigkeit bei Anfrage angeben.",
+    "Eventbuchung telefonisch oder per E-Mail, danach Auftragsbestätigung und Rechnung; Treffpunkt in der Bestätigung."
+  ],
+  "archive_not_presented_as_current": {
+    "parcours": {
+      "source": "https://web.archive.org/web/20260420063830/https://bsv-donzdorf.de/parcours/",
+      "snapshot": "2026-04-20",
+      "opening_hours": "täglich 9–20 Uhr; ganzjährig",
+      "prices_eur": {
+        "adult_day": 14,
+        "family_day_2_adults_2_children": 35,
+        "eleven_visit_card": 140,
+        "annual_card": 260,
+        "children": 7
+      },
+      "children_age_limit": "Nicht angegeben.",
+      "ticket_purchase": "Holzschuppen hinter Waldschenke, Im Mössel 2. Scorekarte und Umschlag aus Briefkasten nehmen; Name und KFZ-Kennzeichen auf Umschlag schreiben; Geld in Umschlag, dann in Schlitz über dem Briefkasten einwerfen.",
+      "rules": "Auf Rückseite der Scorekarte.",
+      "status": "Im Archiv belegt, nicht unabhängig als aktuell bestätigt."
+    },
+    "club": {
+      "source": "https://web.archive.org/web/20260312100351/https://bsv-donzdorf.de/verein/",
+      "snapshot": "2026-03-12",
+      "founded": 2000,
+      "contact_named": "Ralf Haas als 2. Vorstand genannt; aktuelle Funktion nicht bestätigt.",
+      "training_or_membership_details": "Keine konkreten Trainingszeiten oder Mitgliedsbeiträge in den geprüften Seiten gefunden."
+    }
+  },
+  "sources": {
+    "parcours": "https://staufen-events.de/angebot/bogenparcour/",
+    "rental": "https://staufen-events.de/angebot/bogenverleih/",
+    "legal": "https://staufen-events.de/impressum/",
+    "contact": "https://staufen-events.de/kontakt/",
+    "rounds": "https://staufen-events.de/2025/08/26/zwei-runden-viele-ziele-und-ein-echtes-erlebnis-unser-parcours-aus-besuchersicht/",
+    "clothing": "https://staufen-events.de/2026/08/20/neues-target-im-wald-der-wachsame-fuchs/",
+    "event_booking": "https://staufen-events.de/agb/",
+    "archived_parcours": "https://web.archive.org/web/20260420063830/https://bsv-donzdorf.de/parcours/",
+    "archived_club": "https://web.archive.org/web/20260312100351/https://bsv-donzdorf.de/verein/"
+  }
+}

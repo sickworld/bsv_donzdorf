@@ -1,0 +1,29 @@
+# Include this file in http {}. Copy the three other .conf files to /etc/nginx/bsv/.
+# Set the real document root and certificate paths before activating.
+include /etc/nginx/bsv/redirect-map.conf;
+
+server {
+    listen 80;
+    listen [::]:80;
+    server_name bsv-donzdorf.de www.bsv-donzdorf.de;
+    include /etc/nginx/bsv/redirect-check.conf;
+    return 301 https://bsv-donzdorf.de$request_uri;
+}
+server {
+    listen 443 ssl;
+    listen [::]:443 ssl;
+    server_name www.bsv-donzdorf.de;
+    ssl_certificate /etc/letsencrypt/live/bsv-donzdorf.de/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/bsv-donzdorf.de/privkey.pem;
+    include /etc/nginx/bsv/redirect-check.conf;
+    return 301 https://bsv-donzdorf.de$request_uri;
+}
+server {
+    listen 443 ssl;
+    listen [::]:443 ssl;
+    server_name bsv-donzdorf.de;
+    ssl_certificate /etc/letsencrypt/live/bsv-donzdorf.de/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/bsv-donzdorf.de/privkey.pem;
+    root /var/www/bsv-donzdorf;
+    include /etc/nginx/bsv/site-routes.conf;
+}

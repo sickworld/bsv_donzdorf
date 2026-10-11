@@ -1,0 +1,16 @@
+# Local OS files, logs and Python caches.
+.DS_Store
+*.log
+__pycache__/
+*.py[cod]
+
+# Generated deployment packages and local hosting metadata.
+*.zip
+*.tar.gz
+.openai/
+
+# Original video clip; the website uses site/dist/assets/parcours-loop.mp4.
+/media/
+
+# Generated local verification report.
+/nginx/pruefergebnis.json

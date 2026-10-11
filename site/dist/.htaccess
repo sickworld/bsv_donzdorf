@@ -1,0 +1,75 @@
+# BSV Donzdorf – Apache 2.4, DocumentRoot = this directory.
+# Requires mod_rewrite and AllowOverride FileInfo Indexes Options.
+# Local preview hosts are not forced to the production domain.
+Options -Indexes -MultiViews
+DirectoryIndex index.html
+ErrorDocument 404 /404.html
+
+RewriteEngine On
+
+# Let Apache render the error document without redirecting it.
+RewriteCond %{ENV:REDIRECT_STATUS} !^$
+RewriteRule ^404\.html$ - [END]
+
+# Known historic WordPress IDs; discard obsolete query parameters.
+RewriteCond %{QUERY_STRING} (^|&)(p|page_id)=84(&|$) [NC]
+RewriteRule ^(?:index\.php)?$ "https://bsv-donzdorf.de/#verein" [R=301,END,NE,QSD,NC]
+RewriteCond %{QUERY_STRING} (^|&)(p|page_id)=87(&|$) [NC]
+RewriteRule ^(?:index\.php)?$ "https://bsv-donzdorf.de/#parcours" [R=301,END,NE,QSD,NC]
+RewriteCond %{QUERY_STRING} (^|&)(p|page_id)=240(&|$) [NC]
+RewriteRule ^(?:index\.php)?$ "https://bsv-donzdorf.de/impressum.html" [R=301,END,NE,QSD,NC]
+
+# Unknown WordPress requests must not return the homepage.
+RewriteCond %{QUERY_STRING} (^|&)(p|page_id|attachment_id|s|feed|paged|preview)= [NC]
+RewriteRule ^(?:index\.(?:php|html))?$ - [R=404,END,NC]
+
+# Recovered paths: permanent redirects to equivalent content.
+RewriteRule ^home/?$ "https://bsv-donzdorf.de/" [R=301,END,NE,QSD,NC]
+RewriteRule ^startseite/?$ "https://bsv-donzdorf.de/" [R=301,END,NE,QSD,NC]
+# Only a client request for index.html, never DirectoryIndex internals.
+RewriteCond %{THE_REQUEST} "\s/+index\.html(?:[?\s/])" [NC]
+RewriteRule ^index\.html/?$ "https://bsv-donzdorf.de/" [R=301,END,NE,QSD,NC]
+RewriteRule ^index\.php/?$ "https://bsv-donzdorf.de/" [R=301,END,NE,QSD,NC]
+RewriteRule ^parcours/?$ "https://bsv-donzdorf.de/#parcours" [R=301,END,NE,QSD,NC]
+RewriteRule ^pages/parcours\.php/?$ "https://bsv-donzdorf.de/#parcours" [R=301,END,NE,QSD,NC]
+RewriteRule ^2020/04/07/willkommen\-auf\-unserem\-3d\-parcours/?$ "https://bsv-donzdorf.de/#parcours" [R=301,END,NE,QSD,NC]
+RewriteRule ^verein/?$ "https://bsv-donzdorf.de/#verein" [R=301,END,NE,QSD,NC]
+RewriteRule ^kontakt/?$ "https://bsv-donzdorf.de/#besuch" [R=301,END,NE,QSD,NC]
+RewriteRule ^anfahrt/?$ "https://bsv-donzdorf.de/#besuch" [R=301,END,NE,QSD,NC]
+RewriteRule ^preise/?$ "https://bsv-donzdorf.de/#besuch" [R=301,END,NE,QSD,NC]
+RewriteRule ^pages/anfahrt\.php/?$ "https://bsv-donzdorf.de/#besuch" [R=301,END,NE,QSD,NC]
+RewriteRule ^pages/kontakt\.php/?$ "https://bsv-donzdorf.de/#besuch" [R=301,END,NE,QSD,NC]
+RewriteRule ^pages/preise\.php/?$ "https://bsv-donzdorf.de/#besuch" [R=301,END,NE,QSD,NC]
+RewriteRule ^pages/verein/kontakt\.php/?$ "https://bsv-donzdorf.de/#besuch" [R=301,END,NE,QSD,NC]
+RewriteRule ^2020/05/20/parkplaetze/?$ "https://bsv-donzdorf.de/#besuch" [R=301,END,NE,QSD,NC]
+RewriteRule ^2025/09/16/neuer\-wegweiser\-zum\-3d\-bogenparcours\-orientierung\-leicht\-gemacht/?$ "https://bsv-donzdorf.de/#besuch" [R=301,END,NE,QSD,NC]
+RewriteRule ^impressum/?$ "https://bsv-donzdorf.de/impressum.html" [R=301,END,NE,QSD,NC]
+RewriteRule ^verein/impressum/?$ "https://bsv-donzdorf.de/impressum.html" [R=301,END,NE,QSD,NC]
+RewriteRule ^pages/impressum\.php/?$ "https://bsv-donzdorf.de/impressum.html" [R=301,END,NE,QSD,NC]
+RewriteRule ^datenschutz/?$ "https://bsv-donzdorf.de/datenschutz.html" [R=301,END,NE,QSD,NC]
+RewriteRule ^datenschutzerklaerung/?$ "https://bsv-donzdorf.de/datenschutz.html" [R=301,END,NE,QSD,NC]
+RewriteRule ^aktuelles/?$ "https://bsv-donzdorf.de/#aktuelles" [R=301,END,NE,QSD,NC]
+RewriteRule ^neuigkeiten/?$ "https://bsv-donzdorf.de/#aktuelles" [R=301,END,NE,QSD,NC]
+RewriteRule ^pages/kalender\.php/?$ "https://bsv-donzdorf.de/#aktuelles" [R=301,END,NE,QSD,NC]
+RewriteRule ^2022/09/25/bogenverleih\-in\-donzdorf/?$ "https://staufen-events.de/angebot/bogenverleih/" [R=301,END,NE,QSD,NC]
+RewriteRule ^2025/09/12/viele\-schuetzinnen\-und\-schuetzen\-fragen\-uns\-ob\-sie\-mit\-ihrer\-eigenen\-bogenausruestung\-auf\-unserem\-vereinsparcours\-trainieren\-duerfen/?$ "https://staufen-events.de/2025/09/10/mit-eigener-ausruestung-auf-dem-parcours-kein-problem/" [R=301,END,NE,QSD,NC]
+RewriteRule ^category/allgemein(?:/page/[0-9]+)?/?$ "https://bsv-donzdorf.de/#aktuelles" [R=301,END,NE,QSD,NC]
+RewriteRule ^page/[0-9]+/?$ "https://bsv-donzdorf.de/#aktuelles" [R=301,END,NE,QSD,NC]
+
+# No old PHP runtime, hidden files or direct indexing of the error page.
+RewriteRule (^|/)\.(?!well-known(?:/|$)) - [R=404,END]
+RewriteRule \.php(?:/|$) - [R=404,END,NC]
+RewriteRule ^404\.html$ - [R=404,END,NC]
+
+# Canonical host / HTTPS, only on the two production hostnames.
+# With TLS termination at a proxy, configure HTTPS detection in the vhost.
+RewriteCond %{HTTP_HOST} ^(?:www\.)?bsv-donzdorf\.de(?::[0-9]+)?$ [NC]
+RewriteCond %{HTTPS} !=on [OR]
+RewriteCond %{HTTP_HOST} !^bsv-donzdorf\.de$ [NC]
+RewriteRule ^ https://bsv-donzdorf.de%{REQUEST_URI} [R=301,END,NE]
+
+# Serve existing files only. Unknown URLs keep their HTTP 404 status.
+RewriteCond %{REQUEST_FILENAME} -f
+RewriteRule ^ - [END]
+RewriteRule ^$ index.html [END]
+RewriteRule ^ - [R=404,END]
